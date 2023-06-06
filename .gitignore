@@ -1,4 +1,4 @@
 node_modules/
-on-finished/
+on-finished
 *.env
 .cache/
