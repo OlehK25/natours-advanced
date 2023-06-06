@@ -49,7 +49,6 @@ if (userDataForm) {
 		form.append("email", document.getElementById("email").value);
 		form.append("photo", document.getElementById("photo").files[0]);
 
-		console.log("form", form);
 		await updateSettings(form, "data");
 	});
 }
