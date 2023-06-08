@@ -1,4 +1,7 @@
 node_modules/
-on-finished
+ms/
+safe-buffer
 *.env
 .cache/
+.idea
+.gitignore
