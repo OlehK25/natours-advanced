@@ -8,6 +8,7 @@ const xss = require("xss-clean");
 const hpp = require("hpp");
 const cookieParser = require("cookie-parser");
 const compression = require("compression");
+const cors = require("cors");
 
 const tourRouter = require("./routes/tourRoutes");
 const userRouter = require("./routes/userRoutes");
@@ -20,12 +21,17 @@ const viewRouter = require("./routes/viewRoutes");
 // Start express app
 const app = express();
 
-app.enable('trust proxy');
+app.enable("trust proxy");
 
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 
 // 1) GLOGAL MIDDLEWARES
+// Implement CORS
+app.use(cors());
+// Access-Control-Allow-Origin
+app.options("*", cors());
+
 // serving static files
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -38,9 +44,9 @@ if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 
 // limit requests from same API
 const limiter = rateLimit({
-	max: 100,
-	windowMs: 60 * 60 * 1000,
-	message: "Too many requests from this IP, please try again in an hour!",
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: "Too many requests from this IP, please try again in an hour!",
 });
 app.use("/api", limiter);
 
@@ -57,25 +63,25 @@ app.use(xss());
 
 //  prevent parameter pollution
 app.use(
-	hpp({
-		whitelist: [
-			"duration",
-			"ratingsQuantity",
-			"ratingsAverage",
-			"maxGroupSize",
-			"difficulty",
-			"price",
-		],
-	})
+  hpp({
+    whitelist: [
+      "duration",
+      "ratingsQuantity",
+      "ratingsAverage",
+      "maxGroupSize",
+      "difficulty",
+      "price",
+    ],
+  })
 );
 
 app.use(compression());
 
 // test middleware
 app.use((req, res, next) => {
-	req.requestTime = new Date().toISOString();
-	// console.log(req.cookies);
-	next();
+  req.requestTime = new Date().toISOString();
+  // console.log(req.cookies);
+  next();
 });
 
 // ROUTES
@@ -83,11 +89,11 @@ app.use((req, res, next) => {
 because it violates the following Content Security Policy directive: "script-src 'self'". 
 Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. */
 app.use(function (req, res, next) {
-	res.setHeader(
-		"Content-Security-Policy",
-		"script-src 'self' https://api.mapbox.com https://cdnjs.cloudflare.com https://js.stripe.com; worker-src 'self' blob:"
-	);
-	next();
+  res.setHeader(
+    "Content-Security-Policy",
+    "script-src 'self' https://api.mapbox.com https://cdnjs.cloudflare.com https://js.stripe.com; worker-src 'self' blob:"
+  );
+  next();
 });
 ////////////////////////////////////////////////////////////////
 
@@ -98,11 +104,11 @@ app.use("/api/v1/reviews", reviewRouter);
 app.use("/api/v1/bookings", bookingRouter);
 
 app.all("*", (req, res, next) => {
-	res.status(400).json({
-		status: "fail",
-		message: `Can't find ${req.originalUrl} on this server!`,
-	});
-	// next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404)); - false...
+  res.status(400).json({
+    status: "fail",
+    message: `Can't find ${req.originalUrl} on this server!`,
+  });
+  // next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404)); - false...
 });
 
 app.use(globalErrorHandler);
