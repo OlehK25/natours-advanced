@@ -1,7 +1,0 @@
-node_modules/
-ms/
-safe-buffer
-*.env
-.cache/
-.idea
-.gitignore
