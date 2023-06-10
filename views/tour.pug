@@ -35,6 +35,11 @@ block content
                     span.heading-box__text= tour.startLocation.description
 
     section.section-description
+        .description-box
+            h2.heading-secondary.ma-bt-lg= `About ${tour.name} tour`
+            - const paragraphs = tour.description.split('\n')
+            each p in paragraphs
+                p.description__text= p
         .overview-box
             div
                 .overview-box__group
@@ -57,12 +62,7 @@ block content
                             - if(guide.role === 'guide')
                             span.overview-box__label Tour guide
                             span.overview-box__text= guide.name
-        .description-box
-            h2.heading-secondary.ma-bt-lg= `About ${tour.name} tour`
 
-            - const paragraphs = tour.description.split('\n')
-            each p in paragraphs
-                p.description__text= p
 
     section.section-pictures
         each img, i in tour.images
