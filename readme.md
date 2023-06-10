@@ -30,4 +30,8 @@ The Natours API leverages a robust set of tools and technologies to deliver a se
 
 ## Future Improvements and Issues
 No known issues are present as of now. Future improvements will be based on user feedback and developer insights. Check the issues section on the GitHub page for updates.
+
+## License
+This project is licensed under the MIT License. 
+[https://github.com/OlehK25/natours-advanced/blob/master/LICENSE]
 ### Happy exploring and happy coding!
