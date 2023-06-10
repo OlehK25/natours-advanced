@@ -38,6 +38,11 @@ Install all necessary dependencies as defined in the package.json file.
 ```bash
   npm install
 ```
+Parcel build:
+
+```bash
+  npm run build:js
+```
 
 Start the server (dev)
 
