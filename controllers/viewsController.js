@@ -26,11 +26,6 @@ exports.getOverview = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.autoScroll = (req, res, next) => {
-  window.scrollTo(0, 0);
-  next();
-};
-
 exports.getTour = catchAsync(async (req, res, next) => {
   // get the data, for the requested tour (including reviews and guides)
 
