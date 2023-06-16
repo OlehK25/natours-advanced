@@ -67,6 +67,8 @@ No known issues are present as of now. Future improvements will be based on user
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/oleh-kozakk/)
 
+Extensive documentation with examples [here](https://documenter.getpostman.com/view/26679720/2s93mASJs2)
+
 ## 🧷 License
 
 This project is licensed under the [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/OlehK25/natours-advanced/blob/master/LICENSE)
