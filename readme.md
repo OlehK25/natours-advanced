@@ -5,7 +5,6 @@ Explore and book your next adventure with the Natours API, a RESTful web service
 ## 🕸️ About
 
 The Natours API powers a full-stack application that caters to individuals who crave travel and tour vacations. It provides various services such as viewing and booking tours, leaving reviews, and more. Every tour is carefully curated to ignite the adventurous spirit in each user. Users can browse through the available tours, delve into detailed information about each tour, and upon signing up or logging in, book the tour of their choice. This API is built as a pet project, aimed at refining the developer's full-stack web development skills.
-Visit the live app [here](https://natours-advanced.herokuapp.com/)
 
 ## 🗒️ Technology Stack
 
